@@ -1,22 +1,22 @@
 <?php
     class Genre
     {
-        private $type;
+        private $name;
         private $id;
 
-        function __construct($type, $id=null)
+        function __construct($name, $id=null)
         {
-            $this->type = $type;
+            $this->name = $name;
         }
 
-        function getType()
+        function getName()
         {
-            return $this->type;
+            return $this->name;
         }
 
-        function setType($type)
+        function setName($name)
         {
-            $this->type = $type;
+            $this->name = $name;
         }
 
         function getID()
@@ -26,7 +26,25 @@
 
         function save()
         {
-            $GLOBAL['DB']->exec("INSERT INTO genres (type) VALUES ('{$this->getType()}')");
+            $GLOBALS['DB']->exec("INSERT INTO genres (name) VALUES ('{$this->getName()}');");
+        }
+
+        static function getAll()
+        {
+            $returned_genres = $GLOBALS['DB']->query("SELECT * FROM genres;");
+            $genres = array();
+            foreach ($returned_genres as $genre) {
+                $name = $genre['name'];
+                $new_genre = new Genre($name);
+                array_push($genres, $new_genre);
+            }
+            return $genres;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->query("DELETE FROM genres;");
+
         }
     }
  ?>
