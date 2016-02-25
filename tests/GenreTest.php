@@ -33,6 +33,20 @@
             $this->assertEquals($test_Genre, $result[0]);
         }
 
+        function test_getId()
+        {
+            // Arrange
+            $type = 'Classic Rock';
+            $id = 1;
+            $test_Genre = new Genre($type, $id);
+
+            // Act
+            $result = $test_Genre->getId();
+
+            // Assert
+            $this->assertEquals(1, $result);
+        }
+
         function test_getAll()
         {
             // Arrange
@@ -68,6 +82,24 @@
             // Assert
             $this->assertEquals([], $result);
 
+        }
+
+        function test_find()
+        {
+            // Arrange
+            $type = 'Classic Rock';
+            $test_Genre = new Genre($type);
+            $test_Genre->save();
+            $type2 = 'Modern Rock';
+            $test_Genre2 = new Genre($type2);
+            $test_Genre2->save();
+
+            // Act
+            $id = $test_Genre->getId();
+            $result = Genre::find($id);
+
+            // Assert
+            $this->assertEquals($test_Genre, $result);
         }
     }
  ?>
