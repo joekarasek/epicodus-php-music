@@ -39,6 +39,7 @@
             $type = 'Classic Rock';
             $id = 1;
             $test_Genre = new Genre($type, $id);
+            $test_Genre->save();
 
             // Act
             $result = $test_Genre->getId();
