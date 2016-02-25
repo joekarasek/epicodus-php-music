@@ -7,7 +7,7 @@
 
     require_once __DIR__ . '/../src/Genre.php';
 
-    $server = 'mysql:host=localhost;dbname=music_test';
+    $server = 'mysql:host=localhost:8889;dbname=music_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

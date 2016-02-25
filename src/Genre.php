@@ -23,5 +23,10 @@
         {
             return $this->id;
         }
+
+        function save()
+        {
+            $GLOBAL['DB']->exec("INSERT INTO genres (type) VALUES ('{$this->getType()}')");
+        }
     }
  ?>
