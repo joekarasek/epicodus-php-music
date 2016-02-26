@@ -17,6 +17,8 @@
         protected function tearDown()
         {
             Genre::deleteAll();
+            Artist::deleteAll();
+
         }
 
         function test_save()
@@ -39,7 +41,6 @@
             $type = 'Classic Rock';
             $id = 1;
             $test_Genre = new Genre($type, $id);
-            $test_Genre->save();
 
             // Act
             $result = $test_Genre->getId();

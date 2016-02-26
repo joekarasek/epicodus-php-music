@@ -17,6 +17,7 @@
         protected function tearDown()
         {
             Artist::deleteAll();
+            Genre::deleteAll();
         }
 
         function test_save()

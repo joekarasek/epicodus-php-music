@@ -6,6 +6,18 @@
   <body>
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
+        <h1>Your music collection!</h1>
+        <h2>genres</h2>
+        {% if genres is not empty %}
+            <ul>
+                {% for genre in genres %}
+                    <li>{{ genre.getName }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No genres in database</p>
+        {% endif %}
+        
       {% include '/includes/message.html.twig'%}
       {% include '/includes/form.html.twig' %}
     </div>
